@@ -35,6 +35,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+/**
+ * NotesFragment をホストする、このアプリの 入り口
+ */
 public class NotesActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;

@@ -50,6 +50,7 @@ import java.io.IOException;
 import static com.google.common.base.Preconditions.checkState;
 
 /**
+ * View のうちの1つ。新規ノート追加画面を表示。
  * Main UI for the add note screen. Users can enter a note title and description. Images can be
  * added to notes by clicking on the options menu.
  */

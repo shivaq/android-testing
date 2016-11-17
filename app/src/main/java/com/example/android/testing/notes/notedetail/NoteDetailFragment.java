@@ -35,6 +35,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
+ * View のうちの1つ。ノートの中身 を表示。
  * Main UI for the note detail screen.
  */
 public class NoteDetailFragment extends Fragment implements NoteDetailContract.View {

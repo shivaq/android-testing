@@ -29,6 +29,7 @@ import java.util.Date;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
+ * 新規ノートを保存する
  * Listens to user actions from the UI ({@link AddNoteFragment}), retrieves the data and updates
  * the UI as required.
  */

@@ -45,6 +45,8 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
+ * View レイヤーの定義。全ノートのリストを表示する。
+ * NotesContract.View インターフェイス を実装する。
  * Display a grid of {@link Note}s
  */
 public class NotesFragment extends Fragment implements NotesContract.View {
@@ -81,6 +83,11 @@ public class NotesFragment extends Fragment implements NotesContract.View {
         super.onActivityCreated(savedInstanceState);
 
         setRetainInstance(true);
+
+        //Injection クラスを使うと、
+        //あらかじめ定義された方法で機能の一部をエミュレートするサービスレイヤーを、
+        //テストに inject するだけなので、テスト中に実装をスワップアウトし易い。
+        mActionsListener = new NotesPresenter(Injection.provideNotesRepository(), this);
     }
 
     @Override
@@ -124,7 +131,7 @@ public class NotesFragment extends Fragment implements NotesContract.View {
                 ContextCompat.getColor(getActivity(), R.color.colorPrimary),
                 ContextCompat.getColor(getActivity(), R.color.colorAccent),
                 ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark));
-       swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mActionsListener.loadNotes(true);
@@ -168,7 +175,7 @@ public class NotesFragment extends Fragment implements NotesContract.View {
 
     @Override
     public void showAddNote() {
-        Intent intent = new Intent(getContext(),AddNoteActivity.class);
+        Intent intent = new Intent(getContext(), AddNoteActivity.class);
         startActivityForResult(intent, REQUEST_ADD_NOTE);
     }
 

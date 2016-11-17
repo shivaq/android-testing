@@ -28,8 +28,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 
 /**
- * Listens to user actions from the UI ({@link NotesFragment}), retrieves the data and updates the
- * UI as required.
+ * Presentation レイヤー。ユーザーのアクションをlistenする、Contract のListenerを実装する。
+ * Model 変更時に UI({@link NotesFragment})を更新するため、View への参照を保持。
+ * API から ノートのリストを Load する
  */
 public class NotesPresenter implements NotesContract.UserActionsListener {
 

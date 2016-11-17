@@ -23,10 +23,14 @@ import com.example.android.testing.notes.data.Note;
 import java.util.List;
 
 /**
- * This specifies the contract between the view and the presenter.
+ * NotesFragment と NotesPresenter のインターフェイス
  */
 public interface NotesContract {
 
+    /**
+     * feature の View レイヤーを定義。
+     * View レイヤーは他のレイヤーに開かれた機能であり、UI をハンドルする。
+     */
     interface View {
 
         void setProgressIndicator(boolean active);
@@ -38,6 +42,9 @@ public interface NotesContract {
         void showNoteDetailUi(String noteId);
     }
 
+    /**
+     * View と Presenter レイヤーの間の相互作用を定義
+     */
     interface UserActionsListener {
 
         void loadNotes(boolean forceUpdate);
